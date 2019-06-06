@@ -22,9 +22,7 @@ export class GitLabEndpoint extends ApiEndpoint {
 
     public async push(request: IApiRequest, read: IRead, modify: IModify) {
         async function getUser(username) {
-            const user = await read.getUserReader().getByUsername(username);
-            console.log(username, user);
-            return user;
+            return await read.getUserReader().getByUsername(username);
         }
 
         const roomName = request.content.project.path_with_namespace.replace('/', '-');
@@ -32,7 +30,7 @@ export class GitLabEndpoint extends ApiEndpoint {
         const user = await getUser(request.content.user_username) || await getUser('admin');
         if (room && user) {
             const commits = request.content.commits.map(commit => {
-                return '• ' + commit.message + ' (' + commit.author.name + ')';
+                return '• [' + commit.message + '](' + commit.url + ') (' + commit.author.name + ')';
             }).join('\n');
 
             const text = request.content.user_name + ' pushed some commits to #' + roomName + '\n' + commits;
