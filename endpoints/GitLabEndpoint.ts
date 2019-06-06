@@ -14,7 +14,7 @@ export class GitLabEndpoint extends ApiEndpoint {
         persis: IPersistence,
     ): Promise<IApiResponse> {
         if (!this[request.content.event_name]) {
-            throw Error(`Unknown GitLab event '${request.content.event_name}'`)
+            throw Error(`Unknown GitLab event '${request.content.event_name}'`);
         }
         await this[request.content.event_name](request, read, modify);
         return this.success();
@@ -25,10 +25,10 @@ export class GitLabEndpoint extends ApiEndpoint {
         const room = await read.getRoomReader().getByName(roomName);
         const user = await read.getUserReader().getByUsername('admin');
         if (room && user) {
-            const commits = request.content.commits.map(commit => {
-                return '- ' + commit.message + ' (' + commit.author.name + ')'
+            const commits = request.content.commits.map((commit) => {
+                return '- ' + commit.message + ' (' + commit.author.name + ')';
             }).join('\n');
-            const text = request.content.user_name + ' pushed some commits to #' + roomName + "\n" + commits;
+            const text = request.content.user_name + ' pushed some commits to #' + roomName + '\n' + commits;
             await sendMessage(text, read, modify, user, room);
         }
     }
