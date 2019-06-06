@@ -14,16 +14,16 @@ export async function sendMessage(text: string, read: IRead, modify: IModify, us
         .setRoom(room)
         .setText(text)
         .setGroupable(false);
-    modify.getNotifier().notifyRoom(room, message.getMessage());
+    modify.getCreator().finish(message);
 }
 
 export async function sendMsgWithAttachment(text: string, attachments: Array<IMessageAttachment>,  read: IRead, modify: IModify, sender: IUser, room: IRoom): Promise<void> {
-    const msg = modify.getCreator().startMessage({
+    const message = modify.getCreator().startMessage({
         sender,
         room,
         text,
         groupable: false,
         attachments,
     });
-    modify.getCreator().finish(msg);
+    modify.getCreator().finish(message);
 }
