@@ -3,7 +3,8 @@ import { IMessageAttachment } from '@rocket.chat/apps-engine/definition/messages
 import { ISlashCommandPreviewItem, SlashCommandContext } from '@rocket.chat/apps-engine/definition/slashcommands';
 import { GitLabApp } from '../GitLabApp';
 import { getIssuesPreviewItems } from './issue';
-import { createMsgIssueWithAttachment, sendNotification } from './sendNotification';
+import { sendMsgWithAttachment } from './sendMessage';
+import { sendNotification } from './sendNotification';
 
 export async function getSearchPreviewItems(app: GitLabApp, context: SlashCommandContext, read: IRead, http: IHttp, persis: IPersistence): Promise<Array<ISlashCommandPreviewItem>> {
     const [, scope] = context.getArguments();
@@ -35,5 +36,5 @@ export async function executeSearchPreviewItem(item: ISlashCommandPreviewItem, a
             short: false,
         }],
     }];
-    await createMsgIssueWithAttachment('', attachments, read, modify, context.getSender(), context.getRoom());
+    await sendMsgWithAttachment('', attachments, read, modify, context.getSender(), context.getRoom());
 }
