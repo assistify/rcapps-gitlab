@@ -13,12 +13,23 @@ export class GitLabEndpoint extends ApiEndpoint {
         http: IHttp,
         persis: IPersistence,
     ): Promise<IApiResponse> {
-        const room = await read.getRoomReader().getById('GENERAL');
+        if (!this[request.content.event_name]) {
+            throw Error(`Unknown GitLab event '${request.content.event_name}'`)
+        }
+        await this[request.content.event_name](request, read, modify);
+        return this.success();
+    }
+
+    public async push(request: IApiRequest, read: IRead, modify: IModify) {
+        const roomName = request.content.project.path_with_namespace.replace('/', '-');
+        const room = await read.getRoomReader().getByName(roomName);
         const user = await read.getUserReader().getByUsername('admin');
         if (room && user) {
-            const text = JSON.stringify(request, null, 2);
+            const commits = request.content.commits.map(commit => {
+                return '- ' + commit.message + ' (' + commit.author.name + ')'
+            }).join('\n');
+            const text = request.content.user_name + ' pushed some commits to #' + roomName + "\n" + commits;
             await sendMessage(text, read, modify, user, room);
         }
-        return this.success();
     }
 }
