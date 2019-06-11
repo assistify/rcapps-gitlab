@@ -31,6 +31,16 @@ export class GitLabApp extends App {
             public: false,
             i18nLabel: 'url',
         });
+
+        configurationExtend.settings.provideSetting({
+            id: 'gitlab-username-alias',
+            public: true,
+            required: false,
+            type: SettingType.STRING,
+            packageValue: 'Gitlab-CI',
+            i18nLabel: 'gitlab-username-alias',
+        });
+
         configurationExtend.slashCommands.provideSlashCommand(new GitLabCommand(this));
 
         configurationExtend.api.provideApi({
