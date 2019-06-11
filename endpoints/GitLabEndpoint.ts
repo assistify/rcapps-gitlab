@@ -1,7 +1,24 @@
 import {IHttp, IModify, IPersistence, IRead} from '@rocket.chat/apps-engine/definition/accessors';
 import {ApiEndpoint, IApiEndpointInfo, IApiRequest, IApiResponse} from '@rocket.chat/apps-engine/definition/api';
 import {sendMessage} from '../lib/sendMessage';
-import { createPipelineMessage } from '../lib/PipelineWebhook';
+import {createPipelineMessage} from '../lib/PipelineWebhook';
+
+async function getRoomFromRequest(request: IApiRequest, read: IRead) {
+    const roomName = request.content.project.path_with_namespace.replace('/', '-');
+    const room = await read.getRoomReader().getByName(roomName);
+    if (!room) {
+        throw new Error(`Room ${roomName} not found`);
+    }
+    return {roomName, room};
+}
+
+async function getUser(username: string, read: IRead) {
+    return read.getUserReader().getByUsername(username);
+}
+
+async function getUserFromRequest(request: IApiRequest, read: IRead) {
+    return await getUser(request.content.user_username, read) || await getUser('admin', read);
+}
 
 export class GitLabEndpoint extends ApiEndpoint {
     public path = 'webhook';
@@ -22,13 +39,8 @@ export class GitLabEndpoint extends ApiEndpoint {
     }
 
     public async push(request: IApiRequest, read: IRead, modify: IModify) {
-        async function getUser(username) {
-            return await read.getUserReader().getByUsername(username);
-        }
-
-        const roomName = request.content.project.path_with_namespace.replace('/', '-');
-        const room = await read.getRoomReader().getByName(roomName);
-        const user = await getUser(request.content.user_username) || await getUser('admin');
+        const {roomName, room} = await getRoomFromRequest(request, read);
+        const user = await getUserFromRequest(request, read);
         if (room && user) {
             const commits = request.content.commits.map(commit => {
                 return '• [' + commit.message + '](' + commit.url + ') (' + commit.author.name + ')';
@@ -40,25 +52,12 @@ export class GitLabEndpoint extends ApiEndpoint {
     }
 
     public async pipeline(request: IApiRequest, read: IRead, modify: IModify) {
-            const message = await modify.getCreator().startMessage();
-            const sender = await read.getUserReader().getById('rocket.cat');
-            const usernameAlias = await read.getEnvironmentReader().getSettings().getById('gitlab-username-alias');
-            const room = await read.getRoomReader().getById('GENERAL');
+        const user = await read.getUserReader().getById('rocket.cat');
+        const {room} = await getRoomFromRequest(request, read);
 
-            if (!room) {
-                throw new Error('Room GENERAL not found');
-            }
-            console.log(request);
-            const text =  createPipelineMessage(request);
-
-            message
-                .setSender(sender)
-                .setUsernameAlias(usernameAlias.value)
-                .setGroupable(false)
-                .setRoom(room)
-                .setText(text);
-            modify.getCreator().finish(message);
-
-            console.log('Send message to General');
+        if (room && user) {
+            const text = createPipelineMessage(request);
+            await sendMessage(text, read, modify, user, room);
+        }
     }
 }

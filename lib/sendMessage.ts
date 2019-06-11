@@ -9,8 +9,10 @@ export async function sendMessage(text: string, read: IRead, modify: IModify, us
     if (!room) {
         throw new Error('No Room is available to post Message');
     }
+    const usernameAlias = await read.getEnvironmentReader().getSettings().getById('gitlab-username-alias');
     message
         .setSender(user)
+        .setUsernameAlias(usernameAlias.value)
         .setRoom(room)
         .setText(text)
         .setGroupable(false);
