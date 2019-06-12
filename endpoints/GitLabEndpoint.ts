@@ -31,10 +31,11 @@ export class GitLabEndpoint extends ApiEndpoint {
         http: IHttp,
         persis: IPersistence,
     ): Promise<IApiResponse> {
-        if (!this[request.content.event_name]) {
-            throw Error(`Unknown GitLab event '${request.content.event_name}'`);
+        let eventType = request.content.event_name || request.content.event_type;
+        if (!this[eventType]) {
+            throw Error(`Unknown GitLab event '${eventType}'`);
         }
-        await this[request.content.event_name](request, read, modify);
+        await this[eventType](request, read, modify);
         return this.success();
     }
 
