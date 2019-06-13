@@ -10,7 +10,9 @@ export interface IIssue {
     description: string;
     label: string;
     state: string;
-    assignee: string;
+    assignee: {
+        name: string,
+    };
 }
 export interface IIssueCreate {
     title: string;
@@ -20,9 +22,14 @@ export class Issue {
 // tslint:disable-next-line: no-empty
     constructor() { }
     /**
-     * getIssue
+     * Search Issues
      */
-    public async getIssue(id: string, context: SlashCommandContext, read: IRead, http: IHttp, persis: IPersistence): Promise<IIssue> {
+    public async searchIssues(searchText: string,
+                              scope: string,
+                              context: SlashCommandContext,
+                              read: IRead,
+                              http: IHttp,
+                              persis: IPersistence): Promise<Array<IIssue>> {
         const url = await read.getEnvironmentReader().getSettings().getById('url');
         const persistence = new AppPersistence(persis, read.getPersistenceReader());
         const token = await persistence.getAuthToken(context.getSender());
@@ -30,13 +37,18 @@ export class Issue {
             throw new Error('No Valid token found');
         }
         try {
-            const response = await http.get(`${url.value}/projects/27660/issues/${id}`, {
+            const response = await http.get(`${url.value}/issues`, {
                 headers: {
                     'PRIVATE-TOKEN': token,
                 },
+                params: {
+                    search: searchText,
+                    in: 'title',
+                    scope: scope || 'created-by-me',
+                },
             });
             if (response.statusCode !== HttpStatusCode.OK || !response.data) {
-                throw new Error('No Issue found');
+                throw new Error('No Issues found');
             }
             return response.data;
 
