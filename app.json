@@ -4,9 +4,9 @@
     "requiredApiVersion": "^1.4.0",
     "iconFile": "icon.png",
     "author": {
-        "name": "Vigneshwaran Odayappan",
-        "homepage": "https://github.com/vickyokrm",
-        "support": "assistify.de"
+        "name": "Assistify",
+        "homepage": "https://github.com/assistify",
+        "support": "https://www.assistify.de/"
     },
     "name": "GitLab",
     "nameSlug": "gitlab",
