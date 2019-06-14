@@ -1,7 +1,7 @@
 import { IHttp, IModify, IPersistence, IRead } from '@rocket.chat/apps-engine/definition/accessors';
 import { SlashCommandContext } from '@rocket.chat/apps-engine/definition/slashcommands';
 import { GitLabApp } from '../GitLabApp';
-import { sendNotification, sendNotifWithAttachments } from './sendNotification';
+import { sendNotification, sendNotificationWithAttachments } from './sendNotification';
 
 export async function searchIssues(app: GitLabApp, context: SlashCommandContext, read: IRead, modify: IModify, http: IHttp, persis: IPersistence): Promise<void> {
     const [, , query, scope] = context.getArguments();
@@ -29,7 +29,7 @@ export async function searchIssues(app: GitLabApp, context: SlashCommandContext,
                 short: false,
             }],
         };
-        await sendNotifWithAttachments('', [attachments], read, modify, context.getSender(), context.getRoom());
+        await sendNotificationWithAttachments('', [attachments], read, modify, context.getSender(), context.getRoom());
     }));
 
 }

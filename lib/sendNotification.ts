@@ -12,7 +12,7 @@ export async function sendNotification(text: string, read: IRead, modify: IModif
     }).getMessage());
 }
 
-export async function sendNotifWithAttachments(text: string, attachments: Array<IMessageAttachment>,  read: IRead, modify: IModify, sender: IUser, room: IRoom): Promise<void> {
+export async function sendNotificationWithAttachments(text: string, attachments: Array<IMessageAttachment>,  read: IRead, modify: IModify, sender: IUser, room: IRoom): Promise<void> {
     modify.getNotifier().notifyUser(sender, modify.getCreator().startMessage({
         sender,
         room,
