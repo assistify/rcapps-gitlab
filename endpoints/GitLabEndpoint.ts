@@ -9,7 +9,7 @@ async function getRoomFromRequest(request: IApiRequest, read: IRead) {
     if (!room) {
         throw new Error(`Room ${roomName} not found`);
     }
-    return {roomName, room};
+    return room;
 }
 
 async function getUser(username: string, read: IRead) {
@@ -17,7 +17,7 @@ async function getUser(username: string, read: IRead) {
 }
 
 async function getUserFromRequest(request: IApiRequest, read: IRead) {
-    return await getUser(request.content.user_username, read) || await getUser('admin', read);
+    return await getUser(request.content.user_username, read) || await getUser('rocket.cat', read);
 }
 
 export class GitLabEndpoint extends ApiEndpoint {
@@ -40,21 +40,25 @@ export class GitLabEndpoint extends ApiEndpoint {
     }
 
     public async push(request: IApiRequest, read: IRead, modify: IModify) {
-        const {roomName, room} = await getRoomFromRequest(request, read);
+        const room = await getRoomFromRequest(request, read);
         const user = await getUserFromRequest(request, read);
+        const gitlabUrl = (await read.getEnvironmentReader().getSettings().getById('url')).value.replace(/\/?$/, '/');
         if (room && user) {
+            const projectUrl = gitlabUrl + request.content.project.path_with_namespace;
             const commits = request.content.commits.map((commit) => {
-                return '• [' + commit.message + '](' + commit.url + ') (' + commit.author.name + ')';
+                return `• [${commit.message}](${projectUrl}/commit/${commit.id}) (${commit.author.name})`;
             }).join('\n');
 
-            const text = request.content.user_name + ' pushed some commits to #' + roomName + '\n' + commits;
+            const repoName = request.content.project.name;
+            const text = `${request.content.user_name} pushed some commits to repository [${repoName}](${projectUrl})
+${commits}`;
             await sendMessage(text, read, modify, user, room);
         }
     }
 
     public async pipeline(request: IApiRequest, read: IRead, modify: IModify) {
         const user = await read.getUserReader().getById('rocket.cat');
-        const {room} = await getRoomFromRequest(request, read);
+        const room = await getRoomFromRequest(request, read);
 
         if (room && user) {
             const text = createPipelineMessage(request);
