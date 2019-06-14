@@ -1,10 +1,10 @@
 import {IHttp, IModify, IPersistence, IRead} from '@rocket.chat/apps-engine/definition/accessors';
 import {ApiEndpoint, IApiEndpointInfo, IApiRequest, IApiResponse} from '@rocket.chat/apps-engine/definition/api';
-import {sendMessage} from '../lib/sendMessage';
 import {createPipelineMessage} from '../lib/PipelineWebhook';
+import {sendMessage} from '../lib/sendMessage';
 
 async function getRoomFromRequest(request: IApiRequest, read: IRead) {
-    const roomName = request.content.project.path_with_namespace.replace('/', '-');
+    const roomName = request.content.project.path_with_namespace.replace('/', '-').toLowerCase();
     const room = await read.getRoomReader().getByName(roomName);
     if (!room) {
         throw new Error(`Room ${roomName} not found`);
@@ -31,7 +31,7 @@ export class GitLabEndpoint extends ApiEndpoint {
         http: IHttp,
         persis: IPersistence,
     ): Promise<IApiResponse> {
-        let eventType = request.content.event_name || request.content.event_type;
+        const eventType = request.content.event_name || request.content.event_type;
         if (!this[eventType]) {
             throw Error(`Unknown GitLab event '${eventType}'`);
         }
@@ -43,7 +43,7 @@ export class GitLabEndpoint extends ApiEndpoint {
         const {roomName, room} = await getRoomFromRequest(request, read);
         const user = await getUserFromRequest(request, read);
         if (room && user) {
-            const commits = request.content.commits.map(commit => {
+            const commits = request.content.commits.map((commit) => {
                 return '• [' + commit.message + '](' + commit.url + ') (' + commit.author.name + ')';
             }).join('\n');
 
