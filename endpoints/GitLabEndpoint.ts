@@ -17,7 +17,7 @@ async function getUser(username: string, read: IRead) {
 }
 
 async function getUserFromRequest(request: IApiRequest, read: IRead) {
-    return await getUser(request.content.user_username, read) || await getUser('admin', read);
+    return await getUser(request.content.user_username, read) || await getUser('rocket.cat', read);
 }
 
 export class GitLabEndpoint extends ApiEndpoint {
