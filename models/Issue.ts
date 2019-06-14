@@ -34,7 +34,7 @@ export class Issue {
         const persistence = new AppPersistence(persis, read.getPersistenceReader());
         const token = await persistence.getAuthToken(context.getSender());
         if (!token) {
-            throw new Error('No Valid token found');
+            throw new Error('No valid token found');
         }
         try {
             const response = await http.get(`${url.value}/issues`, {
@@ -48,7 +48,7 @@ export class Issue {
                 },
             });
             if (response.statusCode !== HttpStatusCode.OK || !response.data) {
-                throw new Error('No Issues found');
+                throw new Error('No issues found');
             }
             return response.data;
 
@@ -65,7 +65,7 @@ export class Issue {
         const persistence = new AppPersistence(persis, read.getPersistenceReader());
         const token = await persistence.getAuthToken(context.getSender());
         if (!token) {
-            throw new Error('No Valid token found');
+            throw new Error('No valid token found');
         }
         try {
             const response = await http.get(`${url.value}/issues`, {
@@ -74,7 +74,7 @@ export class Issue {
                 },
             });
             if (response.statusCode !== HttpStatusCode.OK || !response.data) {
-                throw new Error('No Issues found');
+                throw new Error('No issues found');
             }
             return response.data;
         } catch (error) {
@@ -91,7 +91,7 @@ export class Issue {
         const persistence = new AppPersistence(persis, read.getPersistenceReader());
         const token = await persistence.getAuthToken(context.getSender());
         if (!token) {
-            throw new Error('No Valid token found');
+            throw new Error('No valid token found');
         }
 
         const params = {
