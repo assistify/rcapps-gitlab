@@ -1,21 +1,37 @@
 import { IHttp, IModify, IPersistence, IRead } from '@rocket.chat/apps-engine/definition/accessors';
 import { SlashCommandContext } from '@rocket.chat/apps-engine/definition/slashcommands';
-import { ISlashCommandPreviewItem, SlashCommandPreviewItemType } from '@rocket.chat/apps-engine/definition/slashcommands';
 import { GitLabApp } from '../GitLabApp';
-import { sendNotification } from './sendNotification';
+import { sendNotification, sendNotificationWithAttachments } from './sendNotification';
 
-export async function getIssuesPreviewItems(app: GitLabApp, context, read: IRead, http: IHttp, persis: IPersistence): Promise<Array<ISlashCommandPreviewItem>> {
-    const issues = await app.issue.listIssues(context, read, http, persis);
-    if (!issues) {
-        throw new Error('No Preview Items found');
+export async function searchIssues(app: GitLabApp, context: SlashCommandContext, read: IRead, modify: IModify, http: IHttp, persis: IPersistence): Promise<void> {
+    const [, , query, scope] = context.getArguments();
+    if (!query) {
+        throw new Error('Invalid search query');
     }
-    return issues.map((issue) => {
-        return {
-            id: issue.iid.toString(),
-            type: SlashCommandPreviewItemType.TEXT,
-            value: `${issue.iid}: ${issue.title}`,
+    const issues = await app.issue.searchIssues(query, scope, context, read, http, persis);
+    if (!issues) {
+        throw new Error('No issues found');
+    }
+    await Promise.all(issues.map(async (issue) => {
+        const attachments = {
+            text: issue.description,
+            title: {
+                value: issue.title,
+                link: issue.web_url,
+            },
+            fields: [{
+                title: 'Status',
+                value: issue.state,
+                short: false,
+            }, {
+                title: 'Assignee',
+                value: issue.assignee ? issue.assignee.name : 'Not assigned',
+                short: false,
+            }],
         };
-    });
+        await sendNotificationWithAttachments('', [attachments], read, modify, context.getSender(), context.getRoom());
+    }));
+
 }
 
 export async function createIssue(app: GitLabApp, context: SlashCommandContext, read: IRead, modify: IModify, http: IHttp, persis: IPersistence): Promise<void> {
@@ -37,4 +53,5 @@ export async function createIssue(app: GitLabApp, context: SlashCommandContext, 
     };
 
     const response = await app.issue.createIssue(project, issue, context, read, http, persis);
+
 }

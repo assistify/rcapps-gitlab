@@ -10,7 +10,9 @@ export interface IIssue {
     description: string;
     label: string;
     state: string;
-    assignee: string;
+    assignee: {
+        name: string,
+    };
 }
 export interface IIssueCreate {
     title: string;
@@ -20,51 +22,36 @@ export class Issue {
 // tslint:disable-next-line: no-empty
     constructor() { }
     /**
-     * getIssue
+     * Search Issues
      */
-    public async getIssue(id: string, context: SlashCommandContext, read: IRead, http: IHttp, persis: IPersistence): Promise<IIssue> {
+    public async searchIssues(searchText: string,
+                              scope: string,
+                              context: SlashCommandContext,
+                              read: IRead,
+                              http: IHttp,
+                              persis: IPersistence): Promise<Array<IIssue>> {
         const url = await read.getEnvironmentReader().getSettings().getById('url');
         const persistence = new AppPersistence(persis, read.getPersistenceReader());
         const token = await persistence.getAuthToken(context.getSender());
         if (!token) {
-            throw new Error('No Valid token found');
-        }
-        try {
-            const response = await http.get(`${url.value}/api/v4/projects/27660/issues/${id}`, {
-                headers: {
-                    'PRIVATE-TOKEN': token,
-                },
-            });
-            if (response.statusCode !== HttpStatusCode.OK || !response.data) {
-                throw new Error('No Issue found');
-            }
-            return response.data;
-
-        } catch (error) {
-            throw new Error('Unable to get details');
-        }
-    }
-
-    /**
-     * listIssues
-     */
-    public async listIssues(context: SlashCommandContext, read: IRead, http: IHttp, persis: IPersistence): Promise<Array<IIssue>> {
-        const url = await read.getEnvironmentReader().getSettings().getById('url');
-        const persistence = new AppPersistence(persis, read.getPersistenceReader());
-        const token = await persistence.getAuthToken(context.getSender());
-        if (!token) {
-            throw new Error('No Valid token found');
+            throw new Error('No valid token found');
         }
         try {
             const response = await http.get(`${url.value}/api/v4/issues`, {
                 headers: {
                     'PRIVATE-TOKEN': token,
                 },
+                params: {
+                    search: searchText,
+                    in: 'title',
+                    scope: scope || 'created-by-me',
+                },
             });
             if (response.statusCode !== HttpStatusCode.OK || !response.data) {
-                throw new Error('No Issues found');
+                throw new Error('No issues found');
             }
             return response.data;
+
         } catch (error) {
             throw new Error('Unable to get details');
         }
@@ -79,7 +66,7 @@ export class Issue {
         const persistence = new AppPersistence(persis, read.getPersistenceReader());
         const token = await persistence.getAuthToken(context.getSender());
         if (!token) {
-            throw new Error('No Valid token found');
+            throw new Error('No valid token found');
         }
 
         const params = {
