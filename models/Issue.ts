@@ -37,7 +37,7 @@ export class Issue {
             throw new Error('No valid token found');
         }
         try {
-            const response = await http.get(`${url.value}/issues`, {
+            const response = await http.get(`${url.value}/api/v4/issues`, {
                 headers: {
                     'PRIVATE-TOKEN': token,
                 },
@@ -74,7 +74,7 @@ export class Issue {
         };
 
         try {
-            const response = await http.post(`${url.value}/projects/${encodeURIComponent(project)}/issues`, {
+            const response = await http.post(`${url.value}/api/v4/projects/${encodeURIComponent(project)}/issues`, {
                 params,
                 headers: {
                     'PRIVATE-TOKEN': token,
