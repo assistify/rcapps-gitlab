@@ -58,31 +58,6 @@ export class Issue {
     }
 
     /**
-     * listIssues
-     */
-    public async listIssues(context: SlashCommandContext, read: IRead, http: IHttp, persis: IPersistence): Promise<Array<IIssue>> {
-        const url = await read.getEnvironmentReader().getSettings().getById('url');
-        const persistence = new AppPersistence(persis, read.getPersistenceReader());
-        const token = await persistence.getAuthToken(context.getSender());
-        if (!token) {
-            throw new Error('No valid token found');
-        }
-        try {
-            const response = await http.get(`${url.value}/issues`, {
-                headers: {
-                    'PRIVATE-TOKEN': token,
-                },
-            });
-            if (response.statusCode !== HttpStatusCode.OK || !response.data) {
-                throw new Error('No issues found');
-            }
-            return response.data;
-        } catch (error) {
-            throw new Error('Unable to get details');
-        }
-    }
-
-    /**
      * createIssue
      */
 // tslint:disable-next-line: max-line-length
