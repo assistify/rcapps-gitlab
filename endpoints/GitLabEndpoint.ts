@@ -43,7 +43,6 @@ export class GitLabEndpoint extends ApiEndpoint {
     public async push(request: IApiRequest, read: IRead, modify: IModify) {
         const room = await getRoomFromRequest(request, read);
         const sender = await getUserFromRequest(request, read);
-        const usernameAlias = await read.getEnvironmentReader().getSettings().getById('gitlab-username-alias');
         const gitlabUrl = (await read.getEnvironmentReader().getSettings().getById('url')).value.replace(/\/?$/, '/');
         if (room && sender) {
             const projectUrl = gitlabUrl + request.content.project.path_with_namespace;
@@ -57,26 +56,28 @@ export class GitLabEndpoint extends ApiEndpoint {
             const message: IMessage = {
                     room,
                     sender,
-                    alias: usernameAlias.value,
                     text: text || '',
                     groupable: false,
+                    parseUrls: false,
+                    avatarUrl: request.content.user_avatar || '',
+                    alias: request.content.user_name || '',
             };
             await sendMessage(message, modify);
         }
     }
 
     public async pipeline(request: IApiRequest, read: IRead, modify: IModify) {
-        const sender = await read.getUserReader().getById('rocket.cat');
+        const sender = await getUserFromRequest(request, read);
         const room = await getRoomFromRequest(request, read);
-        const usernameAlias = await read.getEnvironmentReader().getSettings().getById('gitlab-username-alias');
         if (room && sender) {
             const text = createPipelineMessage(request);
             const message: IMessage = {
                 room,
                 sender,
-                alias: usernameAlias.value,
+                alias: request.content.user_name || '',
                 text: text || '',
                 groupable: false,
+                parseUrls: false,
             };
             await sendMessage(message, modify);
         }
