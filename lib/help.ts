@@ -1,12 +1,19 @@
 import { IModify, IRead } from '@rocket.chat/apps-engine/definition/accessors';
+import { IMessage } from '@rocket.chat/apps-engine/definition/messages';
 import { SlashCommandContext } from '@rocket.chat/apps-engine/definition/slashcommands';
-import { sendNotification } from './sendNotification';
+import { sendNotification } from './send';
 
 export function help(context: SlashCommandContext, read: IRead, modify: IModify): void {
-    const msg = `The commands I can understand:
+    const text = `The commands I can understand:
                  \`/gitlab setup token <your_auth_token>\`
                  \`/gitlab create issue <repository id | path> <issue title> <description>\`
                  \`/gitlab search issues <keyword> (optional: [created-by-me | assigned-to-me | all])\``;
 
-    sendNotification(msg, read, modify, context.getSender(), context.getRoom());
+    const message: IMessage = {
+        room: context.getRoom(),
+        sender: context.getSender(),
+        text,
+    };
+
+    sendNotification(message, modify);
 }

@@ -1,7 +1,8 @@
 import { IHttp, IModify, IPersistence, IRead } from '@rocket.chat/apps-engine/definition/accessors';
+import { IMessage } from '@rocket.chat/apps-engine/definition/messages';
 import { SlashCommandContext } from '@rocket.chat/apps-engine/definition/slashcommands';
 import { GitLabApp } from '../GitLabApp';
-import { sendNotification, sendNotificationWithAttachments } from './sendNotification';
+import { sendNotification } from './send';
 
 export async function searchIssues(app: GitLabApp, context: SlashCommandContext, read: IRead, modify: IModify, http: IHttp, persis: IPersistence): Promise<void> {
     const [, , query, scope] = context.getArguments();
@@ -29,7 +30,12 @@ export async function searchIssues(app: GitLabApp, context: SlashCommandContext,
                 short: false,
             }],
         };
-        await sendNotificationWithAttachments('', [attachments], read, modify, context.getSender(), context.getRoom());
+        const message: IMessage = {
+            attachments: [attachments],
+            sender: context.getSender(),
+            room: context.getRoom(),
+        };
+        await sendNotification(message, modify);
     }));
 
 }
@@ -38,12 +44,20 @@ export async function createIssue(app: GitLabApp, context: SlashCommandContext, 
     const [, project, title, description, label] = context.getArguments();
     if (!project) {
         const text = 'Invalid Project name';
-        await sendNotification(text, read, modify, context.getSender(), context.getRoom());
+        const message: IMessage = {
+            sender: context.getSender(),
+            room: context.getRoom(),
+        };
+        await sendNotification(message, modify);
     }
 
     if (!title) {
         const text = 'Issue title cannot be empty';
-        await sendNotification(text, read, modify, context.getSender(), context.getRoom());
+        const message: IMessage = {
+            sender: context.getSender(),
+            room: context.getRoom(),
+        };
+        await sendNotification(message, modify);
     }
 
     const issue = {

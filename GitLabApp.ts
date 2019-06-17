@@ -1,18 +1,15 @@
 import {
     IAppAccessors,
     IConfigurationExtend,
-    IConfigurationModify,
     IEnvironmentRead,
-    IHttp,
     ILogger,
-    IRead,
 } from '@rocket.chat/apps-engine/definition/accessors';
-import {ApiSecurity, ApiVisibility} from '@rocket.chat/apps-engine/definition/api';
+import { ApiSecurity, ApiVisibility} from '@rocket.chat/apps-engine/definition/api';
 import { App } from '@rocket.chat/apps-engine/definition/App';
 import { IAppInfo } from '@rocket.chat/apps-engine/definition/metadata';
-import { ISetting, SettingType } from '@rocket.chat/apps-engine/definition/settings';
+import { SettingType } from '@rocket.chat/apps-engine/definition/settings';
 import { GitLabCommand } from './commands/GitLabCommands';
-import {GitLabEndpoint} from './endpoints/GitLabEndpoint';
+import { GitLabEndpoint} from './endpoints/GitLabEndpoint';
 import { Issue } from './models/Issue';
 
 export class GitLabApp extends App {
