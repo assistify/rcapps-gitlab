@@ -1,17 +1,31 @@
-import { IHttp, IModify, IPersistence, IRead } from '@rocket.chat/apps-engine/definition/accessors';
+import { IModify, IPersistence, IRead } from '@rocket.chat/apps-engine/definition/accessors';
+import { IMessage } from '@rocket.chat/apps-engine/definition/messages';
 import { SlashCommandContext } from '@rocket.chat/apps-engine/definition/slashcommands';
 import { AppPersistence } from './persistance';
-import { sendNotification } from './sendNotification';
+import { sendNotification } from './send';
 
 export async function setupAccount(context: SlashCommandContext, read: IRead, modify: IModify, persis: IPersistence): Promise<void> {
     const [, token, tokenValue] = context.getArguments();
+    let message: IMessage;
     if (!tokenValue || !token) {
-        await sendNotification('Usage: `/gitlab setup token: ACCESS_TOKEN`', read, modify, context.getSender(), context.getRoom());
+        message =  {
+            sender: context.getSender(),
+            room: context.getRoom(),
+            text: `/gitlab setup token ACCESS_TOKEN`,
+            groupable: false,
+        };
+        await sendNotification(message, modify);
         return;
     }
     const persistence = new AppPersistence(persis, read.getPersistenceReader());
 
     await persistence.setupAuthToken(tokenValue, context.getSender());
 
-    await sendNotification('Successfully stored your key', read, modify, context.getSender(), context.getRoom());
+    message  =  {
+        sender: context.getSender(),
+        room: context.getRoom(),
+        text: 'Successfully stored your key',
+        groupable: false,
+    };
+    await sendNotification(message, modify);
 }

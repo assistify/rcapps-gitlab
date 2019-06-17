@@ -8,7 +8,6 @@ and get informed in their chat about newly pushed code or the status of their bu
 The App has currently two parameters which can be configured after installation in the "Administration / Apps" menu:
 
 - `url` - The url of your GitLab installations API
-- `gitlab-username-alias` - the alias of the user posting GitLab-CI information
 
 ## Using the app locally (for further development)
 You can either package it up and manually deploy it to your test instance or you can use the CLI to do so.

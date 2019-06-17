@@ -1,4 +1,4 @@
-import { IApiRequest } from "@rocket.chat/apps-engine/definition/api";
+import { IApiRequest } from '@rocket.chat/apps-engine/definition/api';
 
 export function createPipelineMessage(request: IApiRequest): string {
     if (request.content.object_kind !== 'pipeline') {
