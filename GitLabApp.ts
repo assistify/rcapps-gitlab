@@ -38,6 +38,7 @@ export class GitLabApp extends App {
             required: false,
             type: SettingType.STRING,
             packageValue: 'Gitlab-CI',
+            value: 'Gitlab-CI',
             i18nLabel: 'gitlab-username-alias',
         });
 
