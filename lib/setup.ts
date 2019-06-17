@@ -12,6 +12,7 @@ export async function setupAccount(context: SlashCommandContext, read: IRead, mo
             sender: context.getSender(),
             room: context.getRoom(),
             text: `/gitlab setup token ACCESS_TOKEN`,
+            groupable: false,
         };
         await sendNotification(message, modify);
         return;
@@ -24,6 +25,7 @@ export async function setupAccount(context: SlashCommandContext, read: IRead, mo
         sender: context.getSender(),
         room: context.getRoom(),
         text: 'Successfully stored your key',
+        groupable: false,
     };
     await sendNotification(message, modify);
 }

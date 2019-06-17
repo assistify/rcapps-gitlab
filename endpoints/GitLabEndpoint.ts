@@ -59,6 +59,7 @@ export class GitLabEndpoint extends ApiEndpoint {
                     sender,
                     alias: usernameAlias.value,
                     text: text || '',
+                    groupable: false,
             };
             await sendMessage(message, modify);
         }
@@ -75,6 +76,7 @@ export class GitLabEndpoint extends ApiEndpoint {
                 sender,
                 alias: usernameAlias.value,
                 text: text || '',
+                groupable: false,
             };
             await sendMessage(message, modify);
         }

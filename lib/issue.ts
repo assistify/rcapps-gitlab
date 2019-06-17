@@ -34,6 +34,7 @@ export async function searchIssues(app: GitLabApp, context: SlashCommandContext,
             attachments: [attachments],
             sender: context.getSender(),
             room: context.getRoom(),
+            groupable: false,
         };
         await sendNotification(message, modify);
     }));
@@ -47,6 +48,7 @@ export async function createIssue(app: GitLabApp, context: SlashCommandContext, 
         const message: IMessage = {
             sender: context.getSender(),
             room: context.getRoom(),
+            groupable: false,
         };
         await sendNotification(message, modify);
     }
@@ -56,6 +58,7 @@ export async function createIssue(app: GitLabApp, context: SlashCommandContext, 
         const message: IMessage = {
             sender: context.getSender(),
             room: context.getRoom(),
+            groupable: false,
         };
         await sendNotification(message, modify);
     }

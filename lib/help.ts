@@ -13,6 +13,7 @@ export function help(context: SlashCommandContext, read: IRead, modify: IModify)
         room: context.getRoom(),
         sender: context.getSender(),
         text,
+        groupable: false,
     };
 
     sendNotification(message, modify);

@@ -1,4 +1,4 @@
-import { IModify, IRead } from '@rocket.chat/apps-engine/definition/accessors';
+import { IModify } from '@rocket.chat/apps-engine/definition/accessors';
 import { IMessage } from '@rocket.chat/apps-engine/definition/messages';
 
 export async function sendMessage(message: IMessage, modify: IModify): Promise<void> {
