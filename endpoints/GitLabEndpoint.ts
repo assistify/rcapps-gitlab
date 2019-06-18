@@ -1,6 +1,8 @@
 import {IHttp, IModify, IPersistence, IRead} from '@rocket.chat/apps-engine/definition/accessors';
 import {ApiEndpoint, IApiEndpointInfo, IApiRequest, IApiResponse} from '@rocket.chat/apps-engine/definition/api';
 import { IMessage } from '@rocket.chat/apps-engine/definition/messages';
+import { IRoom } from '@rocket.chat/apps-engine/definition/rooms';
+import { IUser } from '@rocket.chat/apps-engine/definition/users';
 import {createPipelineMessage} from '../lib/PipelineWebhook';
 import { sendMessage } from '../lib/send';
 
@@ -11,6 +13,14 @@ async function getRoomFromRequest(request: IApiRequest, read: IRead) {
         throw new Error(`Room ${roomName} not found`);
     }
     return room;
+}
+
+async function canSenderAccessRoom(sender: IUser, room: IRoom , read: IRead): Promise<boolean> {
+    const members = await read.getRoomReader().getMembers(room.id);
+    if (room.type !== 'c') {
+        return members.some((member) => member.id === sender.id);
+    }
+    return true;
 }
 
 async function getUser(username: string, read: IRead) {
@@ -44,7 +54,7 @@ export class GitLabEndpoint extends ApiEndpoint {
         const room = await getRoomFromRequest(request, read);
         const sender = await getUserFromRequest(request, read);
         const gitlabUrl = (await read.getEnvironmentReader().getSettings().getById('url')).value.replace(/\/?$/, '/');
-        if (room && sender) {
+        if (room && await canSenderAccessRoom(sender, room, read)) {
             const projectUrl = gitlabUrl + request.content.project.path_with_namespace;
             const commits = request.content.commits.map((commit) => {
                 return `• [${commit.message}](${projectUrl}/commit/${commit.id}) (${commit.author.name})`;
