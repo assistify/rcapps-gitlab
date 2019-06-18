@@ -29,7 +29,8 @@ export class GitLabApp extends App {
             i18nLabel: 'url',
         });
 
-        configurationExtend.slashCommands.provideSlashCommand(new GitLabCommand(this));
+        // TODO:Disable slashcommands for now
+        // configurationExtend.slashCommands.provideSlashCommand(new GitLabCommand(this));
 
         configurationExtend.api.provideApi({
             visibility: ApiVisibility.PUBLIC,
