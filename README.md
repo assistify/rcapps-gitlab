@@ -34,7 +34,7 @@ To connect your GitLab project with Assistify you have to do a few steps on both
 
 ### Connect GitLab code repository with Assistify
 
-1. Switch to the Assistify Adminstration -> Apps and select the GitLab app
+1. Switch to the Assistify Adminstration, open the _Apps_ settings and make sure the GitLab app is activated
 2. Copy the _Assistify webhook URL_, enter the _GitLab base URL_ (e.g. https://gitlab.mycompany.com/),  and save your changes
    ![Assistify GitLab App settings](images/assistify-gitlab-app-settings.png "Assistify GitLab App settings")
 3. Switch to the settings of your GitLab project (group > project > settings) and create a new integration
