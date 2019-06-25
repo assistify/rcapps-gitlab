@@ -1,6 +1,6 @@
 # Assistify - GitLab integration
 
-Integrates GitLab with Assistify.
+_**Integrates GitLab with Assistify.**_
 
 This app connects GitLab with Assistify. Users are notified directly in the Assistify chat about code changes and the current build status. In addition, this app allows users to reference, browse and create issues in the chat.
 
@@ -51,11 +51,14 @@ Now you need a channel where the GitLab notifications should appear. This must h
 **Note:** Ideally, you should use the same usernames in GitLab and Assistify. Then the user who triggered the event in GitLab will be used as the sender of the notifications in Assistify. The integration works even if the channel does not have the same name. However, the name of the sender of the notifications is always "Assistify.Admin".
 
 
-## Documentation
+## References
 
-https://github.com/RocketChat/Rocket.Chat.Apps-cli
-https://docs.gitlab.com/ee/user/project/integrations/webhooks.html
+### Releated documentation
 
+- [Rocket.Chat Apps CLI documentation](https://github.com/RocketChat/Rocket.Chat.Apps-cli)
+- [GitLab WebHook documentation](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html)
+
+### Developing Rocket.Chat apps
 Here are some links to examples and documentation:
 - [Rocket.Chat Apps TypeScript Definitions Documentation](https://rocketchat.github.io/Rocket.Chat.Apps-engine/)
 - [Rocket.Chat Apps TypeScript Definitions Repository](https://github.com/RocketChat/Rocket.Chat.Apps-engine)
