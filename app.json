@@ -11,5 +11,5 @@
     "name": "GitLab",
     "nameSlug": "gitlab",
     "classFile": "GitLabApp.ts",
-    "description": "Intergrate GitLab into Rocket.Chat"
+    "description": "Integrates GitLab with Rocket.Chat"
 }
