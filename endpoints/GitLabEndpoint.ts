@@ -90,6 +90,10 @@ export class GitLabEndpoint extends ApiEndpoint {
                 parseUrls: false,
             };
             await sendMessage(message, modify);
+        } else {
+            console.error('Either room or sender could not be found!');
+            console.info('room', room);
+            console.info('sender', sender);
         }
     }
 }
