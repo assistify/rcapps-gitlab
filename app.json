@@ -1,15 +1,15 @@
 {
     "id": "684202ed-1461-4983-9ea7-fde74b15026c",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "requiredApiVersion": "^1.4.0",
     "iconFile": "icon.png",
     "author": {
         "name": "Assistify",
-        "homepage": "https://github.com/assistify",
+        "homepage": "https://github.com/assistify/rcapps-gitlab",
         "support": "https://www.assistify.de/"
     },
     "name": "GitLab",
     "nameSlug": "gitlab",
     "classFile": "GitLabApp.ts",
-    "description": "Integrates GitLab with Rocket.Chat"
+    "description": "Integrates GitLab with Rocket.Chat. Users are notified directly in the chat about code changes and the current build status."
 }
