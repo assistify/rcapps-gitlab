@@ -7,7 +7,7 @@ import {createPipelineMessage} from '../lib/PipelineWebhook';
 import { sendMessage } from '../lib/send';
 
 async function getRoomFromRequest(request: IApiRequest, read: IRead) {
-    const roomName = request.content.project.path_with_namespace.replace('/', '-').toLowerCase();
+    const roomName = request.content.project.path_with_namespace.replace(/\//g, '-').toLowerCase();
     const room = await read.getRoomReader().getByName(roomName);
     if (!room) {
         throw new Error(`Room ${roomName} not found`);
