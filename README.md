@@ -2,7 +2,7 @@
 
 _**Integrates GitLab with Assistify.**_
 
-This app connects GitLab with Assistify. Users are notified directly in the Assistify chat about code changes and the current build status. In addition, this app allows users to reference, browse and create issues in the chat.
+This app connects GitLab with Assistify / Rocket.Chat. Users are notified directly in the chat about code changes. In future versions, this app will allow users to reference, browse and create issues in the chat.
 
 ![GitLab integration example](images/assistify-gitlab-integration-example.png "GitLab integration example")
 
