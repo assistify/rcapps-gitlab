@@ -1,12 +1,13 @@
 {
-    "object_kind": "merge_request",
-    "event_type": "merge_request",
+    "object_kind": "note",
+    "event_type": "note",
     "user": {
       "name": "Jonas Michaelis",
       "username": "jonmi",
       "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2449793/avatar.png",
       "email": "jonas.michaelis@outlook.com"
     },
+    "project_id": 18709877,
     "project": {
       "id": 18709877,
       "name": "webhooks-test",
@@ -26,34 +27,66 @@
       "http_url": "https://gitlab.com/jonmi/webhooks-test.git"
     },
     "object_attributes": {
+      "attachment": null,
+      "author_id": 2449793,
+      "change_position": null,
+      "commit_id": null,
+      "created_at": "2020-05-20 09:07:42 UTC",
+      "discussion_id": "f185d48bdb83c6a32b23bddef15b5ae58bede16a",
+      "id": 345753548,
+      "line_code": null,
+      "note": "comment",
+      "noteable_id": 59161061,
+      "noteable_type": "MergeRequest",
+      "original_position": null,
+      "position": null,
+      "project_id": 18709877,
+      "resolved_at": null,
+      "resolved_by_id": null,
+      "resolved_by_push": null,
+      "st_diff": null,
+      "system": false,
+      "type": null,
+      "updated_at": "2020-05-20 09:07:42 UTC",
+      "updated_by_id": null,
+      "description": "comment",
+      "url": "https://gitlab.com/jonmi/webhooks-test/-/merge_requests/4#note_345753548"
+    },
+    "repository": {
+      "name": "webhooks-test",
+      "url": "git@gitlab.com:jonmi/webhooks-test.git",
+      "description": "",
+      "homepage": "https://gitlab.com/jonmi/webhooks-test"
+    },
+    "merge_request": {
       "assignee_id": null,
       "author_id": 2449793,
-      "created_at": "2020-05-18 10:58:20 UTC",
+      "created_at": "2020-05-20 09:07:30 UTC",
       "description": "",
-      "head_pipeline_id": 147072364,
-      "id": 58956022,
-      "iid": 3,
+      "head_pipeline_id": null,
+      "id": 59161061,
+      "iid": 4,
       "last_edited_at": null,
       "last_edited_by_id": null,
-      "merge_commit_sha": "04c5936b2b883a9fb05f07614685436bbf9fbed0",
+      "merge_commit_sha": null,
       "merge_error": null,
       "merge_params": {
         "force_remove_source_branch": "1"
       },
-      "merge_status": "can_be_merged",
+      "merge_status": "cannot_be_merged",
       "merge_user_id": null,
       "merge_when_pipeline_succeeds": false,
       "milestone_id": null,
       "source_branch": "test",
       "source_project_id": 18709877,
-      "state_id": 3,
+      "state_id": 1,
       "target_branch": "master",
       "target_project_id": 18709877,
       "time_estimate": 0,
-      "title": "Update README.md",
-      "updated_at": "2020-05-18 11:00:24 UTC",
+      "title": "Test",
+      "updated_at": "2020-05-20 09:07:30 UTC",
       "updated_by_id": null,
-      "url": "https://gitlab.com/jonmi/webhooks-test/-/merge_requests/3",
+      "url": "https://gitlab.com/jonmi/webhooks-test/-/merge_requests/4",
       "source": {
         "id": 18709877,
         "name": "webhooks-test",
@@ -91,11 +124,11 @@
         "http_url": "https://gitlab.com/jonmi/webhooks-test.git"
       },
       "last_commit": {
-        "id": "b91d169c07a5b8f64b761a48930636d83ac53736",
-        "message": "Update README.md",
-        "title": "Update README.md",
-        "timestamp": "2020-05-18T09:49:59+00:00",
-        "url": "https://gitlab.com/jonmi/webhooks-test/-/commit/b91d169c07a5b8f64b761a48930636d83ac53736",
+        "id": "ed436f146d29cb622fd955677f3ae5dc4e587402",
+        "message": "Update .gitlab-ci.yml",
+        "title": "Update .gitlab-ci.yml",
+        "timestamp": "2020-05-20T08:45:38+00:00",
+        "url": "https://gitlab.com/jonmi/webhooks-test/-/commit/ed436f146d29cb622fd955677f3ae5dc4e587402",
         "author": {
           "name": "Jonas Michaelis",
           "email": "jonas.michaelis@outlook.com"
@@ -108,30 +141,6 @@
       "assignee_ids": [
   
       ],
-      "state": "merged",
-      "action": "merge"
-    },
-    "labels": [
-  
-    ],
-    "changes": {
-      "state_id": {
-        "previous": 4,
-        "current": 3
-      },
-      "updated_at": {
-        "previous": "2020-05-18 11:00:24 UTC",
-        "current": "2020-05-18 11:00:24 UTC"
-      },
-      "total_time_spent": {
-        "previous": null,
-        "current": 0
-      }
-    },
-    "repository": {
-      "name": "webhooks-test",
-      "url": "git@gitlab.com:jonmi/webhooks-test.git",
-      "description": "",
-      "homepage": "https://gitlab.com/jonmi/webhooks-test"
+      "state": "opened"
     }
   }

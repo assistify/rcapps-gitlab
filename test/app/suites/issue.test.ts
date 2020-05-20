@@ -4,12 +4,12 @@ import * as messages from '../utils/messages';
 
 export { };
 
-describe('Test Issue', () => {
-  it('send issue hook', async done => {
+describe('Test New Issue', () => {
+  it('send new issue hook', async done => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Issue Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/issues/issue.json')
+      body: fs.readFileSync('./json/issues/issue-new.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -20,12 +20,45 @@ describe('Test Issue', () => {
   })
 })
 
-describe('Test Issue (edit)', () => {
-  it('send issue hook with changed desccription', async done => {
+describe('Test Comment Issue', () => {
+  it('send comment issue hook', async done => {
+    request.post({
+      headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Note Hook' },
+      url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
+      body: fs.readFileSync('./json/issues/issue-comment.json')
+    }, async (error, response, body) => {
+      console.log(body)
+      const msg = await messages.getLastMessage();
+      console.log(msg);
+      expect(response.statusCode).toBe(200)
+      done()
+    });
+  })
+})
+
+
+describe('Test Edit Issue', () => {
+  it('send edit issue hook', async done => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Issue Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
       body: fs.readFileSync('./json/issues/issue-edit.json')
+    }, async (error, response, body) => {
+      console.log(body)
+      const msg = await messages.getLastMessage();
+      console.log(msg);
+      expect(response.statusCode).toBe(200)
+      done()
+    });
+  })
+})
+
+describe('Test Close Issue', () => {
+  it('send close issue hook', async done => {
+    request.post({
+      headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Issue Hook' },
+      url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
+      body: fs.readFileSync('./json/issues/issue-close.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();

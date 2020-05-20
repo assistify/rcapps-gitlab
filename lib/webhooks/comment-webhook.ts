@@ -9,6 +9,9 @@ export function createCommentMessage(request: IApiRequest): string {
     if(request.content.issue) {
         text += createIssueMessage(request);
     }
+    if(request.content.merge_request) {
+        text += createMergeRequestMessage(request);
+    }
 
     return text;
 }
@@ -16,12 +19,24 @@ export function createCommentMessage(request: IApiRequest): string {
 
 function createIssueMessage(request: IApiRequest): string {
     let text;
-    const issueName = request.content.issue.title;
+    const issueTitle = request.content.issue.title;
     const issueUrl = request.content.issue.url;
     const note = request.content.object_attributes.note;
     const noteUrl = request.content.object_attributes.url;
 
-    text = `• [Issue: ${issueName}](${issueUrl}): "${note}"\n\n`
+    text = `• [Issue: ${issueTitle}](${issueUrl}): "${note}"\n\n`
+    text += `[Details](${noteUrl})`
+    return text;
+}
+
+function createMergeRequestMessage(request: IApiRequest): string {
+    let text;
+    const mergeTitle = request.content.merge_request.title;
+    const mergeUrl = request.content.merge_request.url;
+    const note = request.content.object_attributes.note;
+    const noteUrl = request.content.object_attributes.url;
+
+    text = `• [Merge Request: ${mergeTitle}](${mergeUrl}): "${note}"\n\n`
     text += `[Details](${noteUrl})`
     return text;
 }

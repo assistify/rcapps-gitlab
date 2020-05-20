@@ -1,0 +1,170 @@
+{
+    "object_kind": "pipeline",
+    "object_attributes": {
+      "id": 147846433,
+      "ref": "master",
+      "tag": false,
+      "sha": "04c5936b2b883a9fb05f07614685436bbf9fbed0",
+      "before_sha": "0000000000000000000000000000000000000000",
+      "source": "web",
+      "status": "success",
+      "detailed_status": "passed",
+      "stages": [
+        "build",
+        "test",
+        "deploy"
+      ],
+      "created_at": "2020-05-20 08:35:49 UTC",
+      "finished_at": "2020-05-20 08:37:13 UTC",
+      "duration": 80,
+      "variables": [
+  
+      ]
+    },
+    "merge_request": null,
+    "user": {
+      "name": "Jonas Michaelis",
+      "username": "jonmi",
+      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2449793/avatar.png",
+      "email": "jonas.michaelis@outlook.com"
+    },
+    "project": {
+      "id": 18709877,
+      "name": "webhooks-test",
+      "description": "",
+      "web_url": "https://gitlab.com/jonmi/webhooks-test",
+      "avatar_url": null,
+      "git_ssh_url": "git@gitlab.com:jonmi/webhooks-test.git",
+      "git_http_url": "https://gitlab.com/jonmi/webhooks-test.git",
+      "namespace": "Jonas Michaelis",
+      "visibility_level": 0,
+      "path_with_namespace": "jonmi/webhooks-test",
+      "default_branch": "master",
+      "ci_config_path": null
+    },
+    "commit": {
+      "id": "04c5936b2b883a9fb05f07614685436bbf9fbed0",
+      "message": "Merge branch 'test' into 'master'\n\nUpdate README.md\n\nSee merge request jonmi/webhooks-test!3",
+      "title": "Merge branch 'test' into 'master'",
+      "timestamp": "2020-05-18T11:00:23+00:00",
+      "url": "https://gitlab.com/jonmi/webhooks-test/-/commit/04c5936b2b883a9fb05f07614685436bbf9fbed0",
+      "author": {
+        "name": "Jonas Michaelis",
+        "email": "jonas.michaelis@outlook.com"
+      }
+    },
+    "builds": [
+      {
+        "id": 560276478,
+        "stage": "deploy",
+        "name": "deploy1",
+        "status": "success",
+        "created_at": "2020-05-20 08:35:49 UTC",
+        "started_at": "2020-05-20 08:36:47 UTC",
+        "finished_at": "2020-05-20 08:37:13 UTC",
+        "when": "on_success",
+        "manual": false,
+        "allow_failure": false,
+        "user": {
+          "name": "Jonas Michaelis",
+          "username": "jonmi",
+          "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2449793/avatar.png",
+          "email": "jonas.michaelis@outlook.com"
+        },
+        "runner": {
+          "id": 380986,
+          "description": "shared-runners-manager-5.gitlab.com",
+          "active": true,
+          "is_shared": true
+        },
+        "artifacts_file": {
+          "filename": null,
+          "size": null
+        }
+      },
+      {
+        "id": 560276476,
+        "stage": "test",
+        "name": "test2",
+        "status": "success",
+        "created_at": "2020-05-20 08:35:49 UTC",
+        "started_at": "2020-05-20 08:36:19 UTC",
+        "finished_at": "2020-05-20 08:36:46 UTC",
+        "when": "on_success",
+        "manual": false,
+        "allow_failure": false,
+        "user": {
+          "name": "Jonas Michaelis",
+          "username": "jonmi",
+          "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2449793/avatar.png",
+          "email": "jonas.michaelis@outlook.com"
+        },
+        "runner": {
+          "id": 380986,
+          "description": "shared-runners-manager-5.gitlab.com",
+          "active": true,
+          "is_shared": true
+        },
+        "artifacts_file": {
+          "filename": null,
+          "size": null
+        }
+      },
+      {
+        "id": 560276474,
+        "stage": "test",
+        "name": "test1",
+        "status": "success",
+        "created_at": "2020-05-20 08:35:49 UTC",
+        "started_at": "2020-05-20 08:36:19 UTC",
+        "finished_at": "2020-05-20 08:36:38 UTC",
+        "when": "on_success",
+        "manual": false,
+        "allow_failure": false,
+        "user": {
+          "name": "Jonas Michaelis",
+          "username": "jonmi",
+          "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2449793/avatar.png",
+          "email": "jonas.michaelis@outlook.com"
+        },
+        "runner": {
+          "id": 380986,
+          "description": "shared-runners-manager-5.gitlab.com",
+          "active": true,
+          "is_shared": true
+        },
+        "artifacts_file": {
+          "filename": null,
+          "size": null
+        }
+      },
+      {
+        "id": 560276473,
+        "stage": "build",
+        "name": "build1",
+        "status": "success",
+        "created_at": "2020-05-20 08:35:49 UTC",
+        "started_at": "2020-05-20 08:35:50 UTC",
+        "finished_at": "2020-05-20 08:36:18 UTC",
+        "when": "on_success",
+        "manual": false,
+        "allow_failure": false,
+        "user": {
+          "name": "Jonas Michaelis",
+          "username": "jonmi",
+          "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2449793/avatar.png",
+          "email": "jonas.michaelis@outlook.com"
+        },
+        "runner": {
+          "id": 380986,
+          "description": "shared-runners-manager-5.gitlab.com",
+          "active": true,
+          "is_shared": true
+        },
+        "artifacts_file": {
+          "filename": null,
+          "size": null
+        }
+      }
+    ]
+  }

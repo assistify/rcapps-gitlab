@@ -21,5 +21,17 @@ function getDescription(request: IApiRequest): string {
 }
 
 function getAction(request: IApiRequest): string {
-    return request.content.object_attributes.state;
+    const action = request.content.object_attributes.action
+    switch (action) {
+        case 'open':
+            return 'opened';
+        case 'update':
+            return 'updated';
+        case 'close':
+            return 'closed';
+        case 'merge':
+            return 'merged';
+        default:
+            return action;
+    };
 }

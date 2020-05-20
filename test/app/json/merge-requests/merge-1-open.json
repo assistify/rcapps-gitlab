@@ -28,11 +28,11 @@
     "object_attributes": {
       "assignee_id": null,
       "author_id": 2449793,
-      "created_at": "2020-05-12 05:42:06 UTC",
+      "created_at": "2020-05-20 09:07:30 UTC",
       "description": "",
       "head_pipeline_id": null,
-      "id": 58356482,
-      "iid": 1,
+      "id": 59161061,
+      "iid": 4,
       "last_edited_at": null,
       "last_edited_by_id": null,
       "merge_commit_sha": null,
@@ -40,20 +40,20 @@
       "merge_params": {
         "force_remove_source_branch": "1"
       },
-      "merge_status": "cannot_be_merged",
+      "merge_status": "unchecked",
       "merge_user_id": null,
       "merge_when_pipeline_succeeds": false,
       "milestone_id": null,
-      "source_branch": "dev",
+      "source_branch": "test",
       "source_project_id": 18709877,
-      "state_id": 2,
+      "state_id": 1,
       "target_branch": "master",
       "target_project_id": 18709877,
       "time_estimate": 0,
-      "title": "Dev",
-      "updated_at": "2020-05-18 09:46:02 UTC",
+      "title": "Test",
+      "updated_at": "2020-05-20 09:07:30 UTC",
       "updated_by_id": null,
-      "url": "https://gitlab.com/jonmi/webhooks-test/-/merge_requests/1",
+      "url": "https://gitlab.com/jonmi/webhooks-test/-/merge_requests/4",
       "source": {
         "id": 18709877,
         "name": "webhooks-test",
@@ -91,11 +91,11 @@
         "http_url": "https://gitlab.com/jonmi/webhooks-test.git"
       },
       "last_commit": {
-        "id": "cd93f4f0af615190d33d968277e304eb31a1d6f3",
-        "message": "Initial commit",
-        "title": "Initial commit",
-        "timestamp": "2020-05-11T12:08:12+00:00",
-        "url": "https://gitlab.com/jonmi/webhooks-test/-/commit/cd93f4f0af615190d33d968277e304eb31a1d6f3",
+        "id": "ed436f146d29cb622fd955677f3ae5dc4e587402",
+        "message": "Update .gitlab-ci.yml",
+        "title": "Update .gitlab-ci.yml",
+        "timestamp": "2020-05-20T08:45:38+00:00",
+        "url": "https://gitlab.com/jonmi/webhooks-test/-/commit/ed436f146d29cb622fd955677f3ae5dc4e587402",
         "author": {
           "name": "Jonas Michaelis",
           "email": "jonas.michaelis@outlook.com"
@@ -108,20 +108,63 @@
       "assignee_ids": [
   
       ],
-      "state": "closed",
-      "action": "close"
+      "state": "opened",
+      "action": "open"
     },
     "labels": [
   
     ],
     "changes": {
-      "state_id": {
-        "previous": 1,
-        "current": 2
+      "author_id": {
+        "previous": null,
+        "current": 2449793
+      },
+      "created_at": {
+        "previous": null,
+        "current": "2020-05-20 09:07:30 UTC"
+      },
+      "description": {
+        "previous": null,
+        "current": ""
+      },
+      "id": {
+        "previous": null,
+        "current": 59161061
+      },
+      "iid": {
+        "previous": null,
+        "current": 4
+      },
+      "merge_params": {
+        "previous": {
+        },
+        "current": {
+          "force_remove_source_branch": "1"
+        }
+      },
+      "source_branch": {
+        "previous": null,
+        "current": "test"
+      },
+      "source_project_id": {
+        "previous": null,
+        "current": 18709877
+      },
+      "target_branch": {
+        "previous": null,
+        "current": "master"
+      },
+      "target_project_id": {
+        "previous": null,
+        "current": 18709877
+      },
+      "title": {
+        "previous": null,
+        "current": "Test"
       },
       "updated_at": {
-        "previous": "2020-05-12 05:42:06 UTC",
-        "current": "2020-05-18 09:46:02 UTC"
+        "previous": null,
+        "current": "2020-05-20 09:07:30 UTC"
       },
       "total_time_spent": {
         "previous": null,
