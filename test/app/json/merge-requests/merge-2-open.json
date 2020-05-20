@@ -1,0 +1,180 @@
+{
+    "object_kind": "merge_request",
+    "event_type": "merge_request",
+    "user": {
+      "name": "Jonas Michaelis",
+      "username": "jonmi",
+      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2449793/avatar.png",
+      "email": "jonas.michaelis@outlook.com"
+    },
+    "project": {
+      "id": 18709877,
+      "name": "webhooks-test",
+      "description": "",
+      "web_url": "https://gitlab.com/jonmi/webhooks-test",
+      "avatar_url": null,
+      "git_ssh_url": "git@gitlab.com:jonmi/webhooks-test.git",
+      "git_http_url": "https://gitlab.com/jonmi/webhooks-test.git",
+      "namespace": "Jonas Michaelis",
+      "visibility_level": 0,
+      "path_with_namespace": "jonmi/webhooks-test",
+      "default_branch": "master",
+      "ci_config_path": null,
+      "homepage": "https://gitlab.com/jonmi/webhooks-test",
+      "url": "git@gitlab.com:jonmi/webhooks-test.git",
+      "ssh_url": "git@gitlab.com:jonmi/webhooks-test.git",
+      "http_url": "https://gitlab.com/jonmi/webhooks-test.git"
+    },
+    "object_attributes": {
+      "assignee_id": null,
+      "author_id": 2449793,
+      "created_at": "2020-05-20 09:09:23 UTC",
+      "description": "",
+      "head_pipeline_id": null,
+      "id": 59161229,
+      "iid": 5,
+      "last_edited_at": null,
+      "last_edited_by_id": null,
+      "merge_commit_sha": null,
+      "merge_error": null,
+      "merge_params": {
+        "force_remove_source_branch": "1"
+      },
+      "merge_status": "unchecked",
+      "merge_user_id": null,
+      "merge_when_pipeline_succeeds": false,
+      "milestone_id": null,
+      "source_branch": "test",
+      "source_project_id": 18709877,
+      "state_id": 1,
+      "target_branch": "master",
+      "target_project_id": 18709877,
+      "time_estimate": 0,
+      "title": "Test 2",
+      "updated_at": "2020-05-20 09:09:23 UTC",
+      "updated_by_id": null,
+      "url": "https://gitlab.com/jonmi/webhooks-test/-/merge_requests/5",
+      "source": {
+        "id": 18709877,
+        "name": "webhooks-test",
+        "description": "",
+        "web_url": "https://gitlab.com/jonmi/webhooks-test",
+        "avatar_url": null,
+        "git_ssh_url": "git@gitlab.com:jonmi/webhooks-test.git",
+        "git_http_url": "https://gitlab.com/jonmi/webhooks-test.git",
+        "namespace": "Jonas Michaelis",
+        "visibility_level": 0,
+        "path_with_namespace": "jonmi/webhooks-test",
+        "default_branch": "master",
+        "ci_config_path": null,
+        "homepage": "https://gitlab.com/jonmi/webhooks-test",
+        "url": "git@gitlab.com:jonmi/webhooks-test.git",
+        "ssh_url": "git@gitlab.com:jonmi/webhooks-test.git",
+        "http_url": "https://gitlab.com/jonmi/webhooks-test.git"
+      },
+      "target": {
+        "id": 18709877,
+        "name": "webhooks-test",
+        "description": "",
+        "web_url": "https://gitlab.com/jonmi/webhooks-test",
+        "avatar_url": null,
+        "git_ssh_url": "git@gitlab.com:jonmi/webhooks-test.git",
+        "git_http_url": "https://gitlab.com/jonmi/webhooks-test.git",
+        "namespace": "Jonas Michaelis",
+        "visibility_level": 0,
+        "path_with_namespace": "jonmi/webhooks-test",
+        "default_branch": "master",
+        "ci_config_path": null,
+        "homepage": "https://gitlab.com/jonmi/webhooks-test",
+        "url": "git@gitlab.com:jonmi/webhooks-test.git",
+        "ssh_url": "git@gitlab.com:jonmi/webhooks-test.git",
+        "http_url": "https://gitlab.com/jonmi/webhooks-test.git"
+      },
+      "last_commit": {
+        "id": "ed436f146d29cb622fd955677f3ae5dc4e587402",
+        "message": "Update .gitlab-ci.yml",
+        "title": "Update .gitlab-ci.yml",
+        "timestamp": "2020-05-20T08:45:38+00:00",
+        "url": "https://gitlab.com/jonmi/webhooks-test/-/commit/ed436f146d29cb622fd955677f3ae5dc4e587402",
+        "author": {
+          "name": "Jonas Michaelis",
+          "email": "jonas.michaelis@outlook.com"
+        }
+      },
+      "work_in_progress": false,
+      "total_time_spent": 0,
+      "human_total_time_spent": null,
+      "human_time_estimate": null,
+      "assignee_ids": [
+  
+      ],
+      "state": "opened",
+      "action": "open"
+    },
+    "labels": [
+  
+    ],
+    "changes": {
+      "author_id": {
+        "previous": null,
+        "current": 2449793
+      },
+      "created_at": {
+        "previous": null,
+        "current": "2020-05-20 09:09:23 UTC"
+      },
+      "description": {
+        "previous": null,
+        "current": ""
+      },
+      "id": {
+        "previous": null,
+        "current": 59161229
+      },
+      "iid": {
+        "previous": null,
+        "current": 5
+      },
+      "merge_params": {
+        "previous": {
+        },
+        "current": {
+          "force_remove_source_branch": "1"
+        }
+      },
+      "source_branch": {
+        "previous": null,
+        "current": "test"
+      },
+      "source_project_id": {
+        "previous": null,
+        "current": 18709877
+      },
+      "target_branch": {
+        "previous": null,
+        "current": "master"
+      },
+      "target_project_id": {
+        "previous": null,
+        "current": 18709877
+      },
+      "title": {
+        "previous": null,
+        "current": "Test 2"
+      },
+      "updated_at": {
+        "previous": null,
+        "current": "2020-05-20 09:09:23 UTC"
+      },
+      "total_time_spent": {
+        "previous": null,
+        "current": 0
+      }
+    },
+    "repository": {
+      "name": "webhooks-test",
+      "url": "git@gitlab.com:jonmi/webhooks-test.git",
+      "description": "",
+      "homepage": "https://gitlab.com/jonmi/webhooks-test"
+    }
+  }

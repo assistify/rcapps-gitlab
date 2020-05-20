@@ -1,0 +1,84 @@
+{
+    "object_kind": "issue",
+    "event_type": "issue",
+    "user": {
+      "name": "Jonas Michaelis",
+      "username": "jonmi",
+      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2449793/avatar.png",
+      "email": "jonas.michaelis@outlook.com"
+    },
+    "project": {
+      "id": 18709877,
+      "name": "webhooks-test",
+      "description": "",
+      "web_url": "https://gitlab.com/jonmi/webhooks-test",
+      "avatar_url": null,
+      "git_ssh_url": "git@gitlab.com:jonmi/webhooks-test.git",
+      "git_http_url": "https://gitlab.com/jonmi/webhooks-test.git",
+      "namespace": "Jonas Michaelis",
+      "visibility_level": 0,
+      "path_with_namespace": "jonmi/webhooks-test",
+      "default_branch": "master",
+      "ci_config_path": null,
+      "homepage": "https://gitlab.com/jonmi/webhooks-test",
+      "url": "git@gitlab.com:jonmi/webhooks-test.git",
+      "ssh_url": "git@gitlab.com:jonmi/webhooks-test.git",
+      "http_url": "https://gitlab.com/jonmi/webhooks-test.git"
+    },
+    "object_attributes": {
+      "author_id": 2449793,
+      "closed_at": "2020-05-20 08:29:01 UTC",
+      "confidential": false,
+      "created_at": "2020-05-20 08:28:38 UTC",
+      "description": "This is the description (edit)",
+      "discussion_locked": null,
+      "due_date": null,
+      "id": 34791185,
+      "iid": 6,
+      "last_edited_at": "2020-05-20 08:28:57 UTC",
+      "last_edited_by_id": 2449793,
+      "milestone_id": null,
+      "moved_to_id": null,
+      "duplicated_to_id": null,
+      "project_id": 18709877,
+      "relative_position": 1073744823,
+      "state_id": 2,
+      "time_estimate": 0,
+      "title": "Test Issue",
+      "updated_at": "2020-05-20 08:29:01 UTC",
+      "updated_by_id": 2449793,
+      "weight": null,
+      "url": "https://gitlab.com/jonmi/webhooks-test/-/issues/6",
+      "total_time_spent": 0,
+      "human_total_time_spent": null,
+      "human_time_estimate": null,
+      "assignee_ids": [
+  
+      ],
+      "assignee_id": null,
+      "labels": [
+  
+      ],
+      "state": "closed",
+      "action": "close"
+    },
+    "labels": [
+  
+    ],
+    "changes": {
+      "updated_at": {
+        "previous": "2020-05-20 08:29:01 UTC",
+        "current": "2020-05-20 08:29:01 UTC"
+      },
+      "total_time_spent": {
+        "previous": null,
+        "current": 0
+      }
+    },
+    "repository": {
+      "name": "webhooks-test",
+      "url": "git@gitlab.com:jonmi/webhooks-test.git",
+      "description": "",
+      "homepage": "https://gitlab.com/jonmi/webhooks-test"
+    }
+  }
