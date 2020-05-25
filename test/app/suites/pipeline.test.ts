@@ -9,7 +9,7 @@ describe('Pipeline 1 - pending', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Pipeline Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/pipelines/pipeline-1-pending.json')
+      body: fs.readFileSync('./test/app/json/pipelines/pipeline-1-pending.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -25,7 +25,7 @@ describe('Pipeline 1 - running', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Pipeline Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/pipelines/pipeline-1-running.json')
+      body: fs.readFileSync('./test/app/json/pipelines/pipeline-1-running.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -42,7 +42,7 @@ describe('Pipeline 1 - success', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Pipeline Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/pipelines/pipeline-1-success.json')
+      body: fs.readFileSync('./test/app/json/pipelines/pipeline-1-success.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -61,7 +61,7 @@ describe('Pipeline 2 - pending', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Pipeline Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/pipelines/pipeline-2-pending.json')
+      body: fs.readFileSync('./test/app/json/pipelines/pipeline-2-pending.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -77,7 +77,7 @@ describe('Pipeline 2 - running', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Pipeline Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/pipelines/pipeline-2-running.json')
+      body: fs.readFileSync('./test/app/json/pipelines/pipeline-2-running.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -94,7 +94,7 @@ describe('Pipeline 2 - canceled', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Pipeline Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/pipelines/pipeline-2-canceled.json')
+      body: fs.readFileSync('./test/app/json/pipelines/pipeline-2-canceled.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -110,7 +110,7 @@ describe('Pipeline 3 - pending', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Pipeline Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/pipelines/pipeline-3-pending.json')
+      body: fs.readFileSync('./test/app/json/pipelines/pipeline-3-pending.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -126,7 +126,7 @@ describe('Pipeline 3 - running', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Pipeline Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/pipelines/pipeline-3-running.json')
+      body: fs.readFileSync('./test/app/json/pipelines/pipeline-3-running.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -143,7 +143,7 @@ describe('Pipeline 3 - failed', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Pipeline Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/pipelines/pipeline-3-failed.json')
+      body: fs.readFileSync('./test/app/json/pipelines/pipeline-3-failed.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();

@@ -9,7 +9,7 @@ describe('Merge Request 1 - open', () => {
         request.post({
             headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Merge Request Hook' },
             url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-            body: fs.readFileSync('./json/merge-requests/merge-1-open.json')
+            body: fs.readFileSync('./test/app/json/merge-requests/merge-1-open.json')
         }, async (error, response, body) => {
             console.log(body)
             const msg = await messages.getLastMessage();
@@ -25,7 +25,7 @@ describe('Merge Request 1 - comment', () => {
         request.post({
             headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Note Hook' },
             url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-            body: fs.readFileSync('./json/merge-requests/merge-1-comment.json')
+            body: fs.readFileSync('./test/app/json/merge-requests/merge-1-comment.json')
         }, async (error, response, body) => {
             console.log(body)
             const msg = await messages.getLastMessage();
@@ -41,7 +41,7 @@ describe('Merge Request 1 - close', () => {
         request.post({
             headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Merge Request Hook' },
             url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-            body: fs.readFileSync('./json/merge-requests/merge-1-close.json')
+            body: fs.readFileSync('./test/app/json/merge-requests/merge-1-close.json')
         }, async (error, response, body) => {
             console.log(body)
             const msg = await messages.getLastMessage();
@@ -59,7 +59,7 @@ describe('Merge Request 2 - open', () => {
         request.post({
             headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Merge Request Hook' },
             url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-            body: fs.readFileSync('./json/merge-requests/merge-2-open.json')
+            body: fs.readFileSync('./test/app/json/merge-requests/merge-2-open.json')
         }, async (error, response, body) => {
             console.log(body)
             const msg = await messages.getLastMessage();
@@ -76,7 +76,7 @@ describe('Merge Request 2 - push', () => {
         request.post({
             headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Merge Request Hook' },
             url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-            body: fs.readFileSync('./json/merge-requests/merge-2-push.json')
+            body: fs.readFileSync('./test/app/json/merge-requests/merge-2-push.json')
         }, async (error, response, body) => {
             console.log(body)
             const msg = await messages.getLastMessage();
@@ -92,7 +92,7 @@ describe('Merge Request 2 - merge', () => {
         request.post({
             headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Merge Request Hook' },
             url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-            body: fs.readFileSync('./json/merge-requests/merge-2-merge.json')
+            body: fs.readFileSync('./test/app/json/merge-requests/merge-2-merge.json')
         }, async (error, response, body) => {
             console.log(body)
             const msg = await messages.getLastMessage();
