@@ -9,7 +9,7 @@ describe('Test New Issue', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Issue Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/issues/issue-new.json')
+      body: fs.readFileSync('./test/app/json/issues/issue-new.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -25,7 +25,7 @@ describe('Test Comment Issue', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Note Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/issues/issue-comment.json')
+      body: fs.readFileSync('./test/app/json/issues/issue-comment.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -42,7 +42,7 @@ describe('Test Edit Issue', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Issue Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/issues/issue-edit.json')
+      body: fs.readFileSync('./test/app/json/issues/issue-edit.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -58,7 +58,7 @@ describe('Test Close Issue', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Issue Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/issues/issue-close.json')
+      body: fs.readFileSync('./test/app/json/issues/issue-close.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();

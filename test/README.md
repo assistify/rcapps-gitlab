@@ -22,7 +22,6 @@ You can also use the tests without docker but then you will have to provide an i
 
 ```
 $ (cd .. && npm install)
-$ (cd app && npm install)
 $ ./run.sh
 ```
 
@@ -32,13 +31,12 @@ $ ./run.sh
 
 ```
 $ (cd .. && npm install)
-$ (cd app && npm install)
 $ (cd app && npm test)
 ```
 
 ## Future Improvements
 
-Currently the tests only validate that there is a `200: OK` response but does not verify the generated message within the channel.
+Currently the tests only validate that there is a `200: OK` response but do not verify the generated message within the channel.
 
 Idea for Improvement:
 

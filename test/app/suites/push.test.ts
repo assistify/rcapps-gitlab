@@ -10,7 +10,7 @@ describe('Test Push', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Push Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/push/push.json')
+      body: fs.readFileSync('./test/app/json/push/push.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();
@@ -30,7 +30,7 @@ describe('Test Push (no avatar)', () => {
     request.post({
       headers: { 'Content-Type': 'application/json', 'X-Gitlab-Event': 'Push Hook' },
       url: 'http://localhost:3000/api/apps/public/684202ed-1461-4983-9ea7-fde74b15026c/webhook',
-      body: fs.readFileSync('./json/push/push-no-avatar.json')
+      body: fs.readFileSync('./test/app/json/push/push-no-avatar.json')
     }, async (error, response, body) => {
       console.log(body)
       const msg = await messages.getLastMessage();

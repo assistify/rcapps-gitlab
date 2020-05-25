@@ -14,7 +14,5 @@ if %ERRORLEVEL% NEQ 0 (
 
 cd ..
 call rc-apps deploy --url=http://localhost:3000 -u=admin -p=supersecret
-cd test
-cd app
 npm test
 
