@@ -1,15 +1,16 @@
 import { IApiRequest } from '@rocket.chat/apps-engine/definition/api';
+import { enforce } from '../enforce';
 
 export function createPipelineMessage(request: IApiRequest): string {
-    const projectUrl = request.content.project.web_url;
-    const repoName = request.content.project.name;
-    const branch = request.content.object_attributes.ref;
+    const projectUrl = enforce(request.content.project.web_url);
+    const repoName = enforce(request.content.project.name);
+    const branch = enforce(request.content.object_attributes.ref);
 
-    const commitUrl = request.content.commit.url;
-    const commitTitle = request.content.commit.title;
+    const commitUrl = enforce(request.content.commit.url);
+    const commitTitle = enforce(request.content.commit.title);
 
-    const status = request.content.object_attributes.status;
-    const pipelineId = request.content.object_attributes.id;
+    const status = enforce(request.content.object_attributes.status);
+    const pipelineId = enforce(request.content.object_attributes.id);
 
     let response = `Status of pipeline [#${pipelineId}](${computePipelineUrl(request)}) for repository [${repoName}](${projectUrl}) changed:\n`
         + `Branch: ${branch}\n`
@@ -18,7 +19,7 @@ export function createPipelineMessage(request: IApiRequest): string {
         + `Steps:\n`
         ;
 
-    const stages = request.content.builds.reverse();
+    const stages = enforce(request.content.builds).reverse();
 
     for (const stage of stages) {
         response += `${computeStatusIcon(stage.status)} \tStage: ${stage.name} Status: ${stage.status} [Details](${computeJobUrl(projectUrl, stage.id)})\n`;
@@ -29,7 +30,7 @@ export function createPipelineMessage(request: IApiRequest): string {
 
 // https://docs.gitlab.com/ee/api/pipelines.html
 function computeStatusIcon(status: string): string {
-    switch (status) {
+    switch (enforce(status)) {
         case 'created':
             return ':white_large_square:';
         case 'pending':
@@ -52,8 +53,8 @@ function computeStatusIcon(status: string): string {
 }
 
 function computePipelineUrl(request: IApiRequest): string {
-    const webUrl = request.content.project.web_url;
-    const pipelineId = request.content.object_attributes.id;
+    const webUrl = enforce(request.content.project.web_url);
+    const pipelineId = enforce(request.content.object_attributes.id);
 
     return `${webUrl}/pipelines/${pipelineId}`;
 }
