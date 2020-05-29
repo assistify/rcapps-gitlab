@@ -1,12 +1,13 @@
 import { IApiRequest } from '@rocket.chat/apps-engine/definition/api';
+import { enforce } from '../enforce';
 
 export function createMergeRequestMessage(request: IApiRequest): string {
-    const projectUrl = request.content.project.web_url;
-    const repoName = request.content.project.name;
-    const mergeTitle = request.content.object_attributes.title;
-    const mergeUrl = request.content.object_attributes.url;
+    const projectUrl = enforce(request.content.project.web_url);
+    const repoName = enforce(request.content.project.name);
+    const mergeTitle = enforce(request.content.object_attributes.title);
+    const mergeUrl = enforce(request.content.object_attributes.url);
 
-    const text = `${request.content.user.name} ${getAction(request)} a merge request in repository [${repoName}](${projectUrl})
+    const text = `${enforce(request.content.user.name)} ${getAction(request)} a merge request in repository [${repoName}](${projectUrl})
         • [${mergeTitle}](${mergeUrl}): ${getDescription(request)}`;
 
     return text;
@@ -21,7 +22,7 @@ function getDescription(request: IApiRequest): string {
 }
 
 function getAction(request: IApiRequest): string {
-    const action = request.content.object_attributes.action
+    const action = enforce(request.content.object_attributes.action);
     switch (action) {
         case 'open':
             return 'opened';

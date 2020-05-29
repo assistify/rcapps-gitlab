@@ -1,12 +1,12 @@
 import { IApiRequest } from '@rocket.chat/apps-engine/definition/api';
+import { enforce } from '../enforce';
 
 export function createIssueMessage(request: IApiRequest): string {
-    const projectUrl = request.content.project.web_url;
-    const repoName = request.content.project.name;
-    const issueName = request.content.object_attributes.title;
-    const issueUrl = request.content.object_attributes.url;
-
-    const text = `${request.content.user.name} ${getAction(request)} an issue in repository [${repoName}](${projectUrl})
+    const projectUrl = enforce(request.content.project.web_url);
+    const repoName = enforce(request.content.project.name);
+    const issueName = enforce(request.content.object_attributes.title);
+    const issueUrl = enforce(request.content.object_attributes.url);
+    const text = `${enforce(request.content.user.name)} ${getAction(request)} an issue in repository [${repoName}](${projectUrl})
         • [${issueName}](${issueUrl}): ${getDescription(request)}`;
 
     return text;
@@ -14,14 +14,14 @@ export function createIssueMessage(request: IApiRequest): string {
 
 function getDescription(request: IApiRequest): string {
     const issueDescription = request.content.object_attributes.description;
-    if(issueDescription) {
+    if (issueDescription) {
         return `"${issueDescription}"`;
     }
     return '_no description provided_';
 }
 
 function getAction(request: IApiRequest): string {
-    switch (request.content.object_attributes.action) {
+    switch (enforce(request.content.object_attributes.action)) {
         case 'open':
             return 'opened';
         case 'close':
@@ -32,3 +32,4 @@ function getAction(request: IApiRequest): string {
             return request.content.object_attributes.action;
     }
 }
+
