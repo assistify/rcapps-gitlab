@@ -2,7 +2,8 @@
     "scripts": {
         "test": "jest",
         "test-win": "cd test && run.bat",
-        "test-linux": "cd test && ./run.sh"
+        "test-linux": "cd test && ./run.sh",
+        "submit": "rc-apps submit --update --categories='Developer Tools'"
     },
     "dependencies": {
         "@rocket.chat/apps-engine": "^1.15.0",
