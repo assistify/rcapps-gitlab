@@ -1,8 +1,8 @@
-# Assistify - GitLab integration
+# Rocket.Chat - GitLab integration
 
-_**Integrates GitLab with Assistify.**_
+_**Integrates GitLab with Rocket.Chat.**_
 
-This app connects GitLab with Assistify / Rocket.Chat. Users are notified directly in the chat about code changes. In future versions, this app will allow users to reference, browse and create issues in the chat.
+This app connects GitLab with Rocket.Chat. Users are notified directly in the chat about code changes. In future versions, this app will allow users to reference, browse and create issues in the chat.
 
 ![GitLab integration example](images/assistify-gitlab-integration-example.png "GitLab integration example")
 
@@ -26,29 +26,29 @@ rc-apps deploy
 
 
 ## Configuration
-To connect your GitLab project with Assistify you have to do a few steps on both sides:
+To connect your GitLab project with Rocket.Chat you have to do a few steps on both sides:
 
 * create and configure an integration within your GitLab project,
-* disclose the GitLab URL in Assistify and finally
-* create an Assistify channel to be used for notifications
+* disclose the GitLab URL in Rocket.Chat and finally
+* create an Rocket.Chat channel to be used for notifications
 
-### Connect GitLab code repository with Assistify
+### Connect GitLab code repository with Rocket.Chat
 
-1. Switch to the Assistify Adminstration, open the _Apps_ settings and make sure the GitLab app is activated
-2. Copy the _Assistify webhook URL_, enter the _GitLab base URL_ (e.g. https://gitlab.mycompany.com/),  and save your changes
-   ![Assistify GitLab App settings](images/assistify-gitlab-app-settings.png "Assistify GitLab App settings")
+1. Switch to the Rocket.Chat Adminstration, open the _Apps_ settings and make sure the GitLab app is activated
+2. Copy the _Rocket.Chat webhook URL_, enter the _GitLab base URL_ (e.g. https://gitlab.mycompany.com/),  and save your changes
+   ![GitLab App settings](images/assistify-gitlab-app-settings.png "GitLab App settings")
 3. Switch to the settings of your GitLab project (group > project > settings) and create a new integration
 4. Paste the previously copied "POST webhook" URL, activate the trigger "Push events", scroll down and press "Add webhook"
    ![GitLab integration settings](images/gitlab-assistify-integration-settings.png "GitLab integration settings")
 
-More info about how to setup an integration (webhook) in GitLab, you'll find at: 
+More info about how to setup an integration (webhook) in GitLab, you'll find at:
 - https://docs.gitlab.com/ee/user/project/integrations/webhooks.html.
 
 ### Configure a notification channel
 
-Now you need a channel where the GitLab notifications should appear. This must have the same name as the GitLab repository. For example, if your GitLab URL is https://gitlab.mycompany.com/assistify/chat, the channel in Assistify must be named `assistify-chat`. Make sure that slashes from the URL are replaced by hyphens.
+Now you need a channel where the GitLab notifications should appear. This must have the same name as the GitLab repository. For example, if your GitLab URL is https://gitlab.mycompany.com/assistify/chat, the channel in Rocket.Chat must be named `assistify-chat`. Make sure that slashes from the URL are replaced by hyphens.
 
-**Note:** Ideally, you should use the same usernames in GitLab and Assistify. Then the user who triggered the event in GitLab will be used as the sender of the notifications in Assistify. The integration works even if the channel does not have the same name. However, the name of the sender of the notifications is always "Assistify.Admin".
+**Note:** Ideally, you should use the same usernames in GitLab and Rocket.Chat. Then the user who triggered the event in GitLab will be used as the sender of the notifications in Rocket.Chat. The integration works even if the channel does not have the same name. However, the name of the sender of the notifications is always "@rocket.cat".
 
 
 ## References
